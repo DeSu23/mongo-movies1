@@ -1,3 +1,18 @@
+window.onload = function () {
+    const searchHeaderText = document.querySelector('.search-text');
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+        searchHeaderText.textContent = "What would you like to watch this morning?";
+    } else if (currentHour < 17) {
+        searchHeaderText.textContent = "What would you like to watch this afternoon?";
+    } else if (currentHour < 20) {
+        searchHeaderText.textContent = "What would you like to watch this evening?";
+    } else {
+        searchHeaderText.textContent = "What would you like to watch tonight?";
+    }
+}
+
 const searchInput = document.querySelector('.search-input');
 const loadingContainer = document.querySelector('.loading-container');
 const moviesContainer = document.getElementById('movies-container');
