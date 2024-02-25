@@ -29,6 +29,7 @@ def search_movies():
         print('Error fetching movies:', e)
         return "<script>alert(f\"Error fetching movies:', {e}\")", 500
 
+# all code below and movie.html done by gabrielzv1233 :D also some of the movies.js was done by me (like 10 chars but still)
 @app.route('/movie/<path:tmdb_movie_id>')
 def movie(tmdb_movie_id):
     api_key = '04aae18c13755d9ce23441e1221b3529'
