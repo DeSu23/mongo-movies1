@@ -3,6 +3,7 @@ import requests
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -29,8 +30,14 @@ def search_movies():
 
 @app.route('/movie/<path:tmdb_movie_id>')
 def movie(tmdb_movie_id):
+    api_key = '04aae18c13755d9ce23441e1221b3529'
+    url = f"https://api.themoviedb.org/3/movie/{tmdb_movie_id}?api_key={api_key}"
+    
+    response = requests.get(url)
+    movie_data = response.json()
+    
     print(tmdb_movie_id)
-    return tmdb_movie_id
+    return render_template('about_movie.html', movie_data=movie_data)
     
 if __name__ == '__main__':
     app.run(debug=True)
