@@ -25,7 +25,12 @@ def search_movies():
         return jsonify(formatted_movies)
     except Exception as e:
         print('Error fetching movies:', e)
-        return jsonify({'error': 'Internal Server Error'}), 500
+        return "<script>alert(f\"Error fetching movies:', {e}\")", 500
 
+@app.route('/movie/<path:tmdb_movie_id>')
+def movie(tmdb_movie_id):
+    print(tmdb_movie_id)
+    return tmdb_movie_id
+    
 if __name__ == '__main__':
     app.run(debug=True)
