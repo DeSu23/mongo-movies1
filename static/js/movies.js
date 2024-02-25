@@ -34,6 +34,12 @@ searchInput.addEventListener('input', function () {
                 const response = await fetch(`/search?query=${query}`);
                 const movies = await response.json();
 
+                if (searchInput.value.trim() === '') {
+                    loadingContainer.style.display = 'none';
+                    moviesContainer.innerHTML = '';
+                    return;
+                }
+
                 movies.forEach(movie => {
                     const movieBox = document.createElement('div');
                     movieBox.classList.add('movie-box');
@@ -46,11 +52,11 @@ searchInput.addEventListener('input', function () {
                     }
 
                     movieBox.innerHTML = `
-                    <div class="movie-image" style="background-image: url('${movieImage}'); background-color: #1f1f1f;" onclick="window.location.href = '/movie/${movie.id}'"></div>
-                    <div class="movie-info">
-                        <h3>${movie.title}</h3>
-                    </div>
-                `;
+        <div class="movie-image" style="background-image: url('${movieImage}'); background-color: #1f1f1f;"></div>
+        <div class="movie-info">
+            <h3>${movie.title}</h3>
+        </div>
+    `;
                     moviesContainer.appendChild(movieBox);
                 });
 
