@@ -46,11 +46,11 @@ searchInput.addEventListener('input', function () {
                     }
 
                     movieBox.innerHTML = `
-        <div class="movie-image" style="background-image: url('${movieImage}'); background-color: #1f1f1f;"></div>
-        <div class="movie-info">
-            <h3>${movie.title}</h3>
-        </div>
-    `;
+                    <div class="movie-image" style="background-image: url('${movieImage}'); background-color: #1f1f1f;" onclick="window.location.href = '/movie/${movie.id}'"></div>
+                    <div class="movie-info">
+                        <h3>${movie.title}</h3>
+                    </div>
+                `;
                     moviesContainer.appendChild(movieBox);
                 });
 
